@@ -8,7 +8,7 @@ services:
     startCommand: node index.js
     envVars:
       - key: BOT_TOKEN
-        sync: false  # Render dashboard থেকে set করবে
+        sync: false
       - key: ENGINE_URL
         fromService:
           name: apk-protector-engine
@@ -21,8 +21,8 @@ services:
   - type: web
     name: apk-protector-engine
     runtime: docker
-    rootDir: engine
-    dockerfilePath: Dockerfile
+    dockerfilePath: engine/Dockerfile  # rootDir বাদ, repo root থেকে full path
+    dockerContext: engine              # Docker build context = engine folder
     envVars:
       - key: PORT
         value: 8000
