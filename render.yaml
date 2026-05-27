@@ -17,12 +17,11 @@ services:
     healthCheckPath: /
     autoDeploy: true
 
-  # Python FastAPI Engine (Docker)
+  # Python FastAPI Engine (Docker - root Dockerfile)
   - type: web
     name: apk-protector-engine
     runtime: docker
-    dockerfilePath: engine/Dockerfile  # rootDir বাদ, repo root থেকে full path
-    dockerContext: engine              # Docker build context = engine folder
+    # Dockerfile এখন repo root এ আছে, কোনো path লাগবে না
     envVars:
       - key: PORT
         value: 8000
